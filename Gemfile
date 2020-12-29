@@ -17,6 +17,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap', '~> 4.5', '>= 4.5.3'
 gem 'jquery-rails'
 gem 'stock_quote', '~> 3.0'
+gem 'devise', '~> 4.7', '>= 4.7.3'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
