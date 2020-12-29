@@ -4,5 +4,8 @@
     <%= text_field_tag 'ticker', nil, placeholder: 'Enter Ticker Symbol', size: 50 %>
     <%= submit_tag 'Lookup' %>
 <% end %>
-<% stock = StockQuote::Stock.quote("fb") %>
-<%= stock.company_name %>
+
+
+<% if @stock%>
+    <%= @stock.company_name %>
+<% end %>
