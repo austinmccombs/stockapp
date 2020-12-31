@@ -3,6 +3,5 @@
     <%= render 'stock_form' %>
     
   </div>
-    <%= @company.description %></br>
-    Market Cap: $<%= number_with_precision(@ticker.market_cap, :precision => 2, :delimiter => ',')%></br>
+    <%= render 'stats_table' %>
 </div>

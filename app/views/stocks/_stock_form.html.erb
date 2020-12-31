@@ -2,6 +2,7 @@
             <% @ticker = StockQuote::Stock.quote(@stock.ticker) %>
             <% @logo = StockQuote::Stock.logo(@stock.ticker)%>
             <% @company = StockQuote::Stock.company(@stock.ticker) %>
+            
                 <% if !@stock.ticker%>
                     The ticker: <%= @stock.ticker %></br> does not exist!
                 <% else %>
@@ -20,3 +21,6 @@
     </br>
     <%= link_to 'Edit', edit_stock_path(@stock) %> |
     <%= link_to 'Back', stocks_path %>
+
+
+   

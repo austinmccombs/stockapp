@@ -1,0 +1,38 @@
+<% @api = StockQuote::Stock.new(api_key: 'pk_61becff1e4974bacba63b255c413dc6f') %>
+            <% @ticker = StockQuote::Stock.quote(@stock.ticker) %>
+            <% @logo = StockQuote::Stock.logo(@stock.ticker)%>
+            <% @company = StockQuote::Stock.company(@stock.ticker) %>
+            <% @stats = StockQuote::Stock.stats(@stock.ticker) %>
+            
+
+<table class = 'table table-striped'>
+    <thead>
+        <th>Stats</th>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>Open: <%= @ticker.iex_open %></td>
+            <td>Volume: <%= number_with_precision(@ticker.iex_volume, :precision => 2, :delimiter => ',') %></td>
+        </tr>
+        <tr>
+            <td>High: <%= @ticker.high %></td>
+            <td>Avg Vol: <%=number_with_precision(@ticker.avg_total_volume, :precision => 2, :delimiter => ',')  %></td>
+        </tr>
+         <tr>
+            <td>Low: <%= @ticker.low %></td>
+            <td>Mkt Cap: <%=number_with_precision(@ticker.market_cap, :precision => 2, :delimiter => ',')  %></td>
+        </tr>
+         <tr>
+            <td>52 Wk High: <%= @ticker.week52_high %></td>
+            <td>P/E Ratio: <%= @ticker.pe_ratio %></td>
+        </tr>
+         <tr>
+            <td>52 Wk Low: <%= @ticker.week52_low %></td>
+            <td>Div/Yield: <%= number_with_precision(@stats.dividend_yield, :precision => 2, :delimiter => ',') %></td>
+        </tr>
+    
+    
+    </tbody>
+
+    
