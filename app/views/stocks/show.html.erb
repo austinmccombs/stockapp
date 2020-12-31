@@ -1,20 +1,29 @@
-<% @api = StockQuote::Stock.new(api_key: 'pk_61becff1e4974bacba63b255c413dc6f') %>
-         <% @ticker = StockQuote::Stock.quote(@stock.ticker) %>
-            <% if !@ticker%>
-                The ticker: <%= @stock.ticker %></br> does not exist!
-            <% else %>
-            
-              <strong><%= link_to @ticker.company_name %></strong></br>
+<div class = 'col-md-6 offset-md-3'>
+  <div class = 'jumbotron jumbotron-secondary'>
+
+    <% @api = StockQuote::Stock.new(api_key: 'pk_61becff1e4974bacba63b255c413dc6f') %>
+            <% @ticker = StockQuote::Stock.quote(@stock.ticker) %>
+            <% @logo = StockQuote::Stock.logo(@stock.ticker)%>
+            <% @company = StockQuote::Stock.company(@stock.ticker) %>
+                <% if !@stock.ticker%>
+                    The ticker: <%= @stock.ticker %></br> does not exist!
+                <% else %>
+                  <img src="<%= @logo.url %>"></br>
+                  <strong><%= link_to @ticker.company_name %></strong></br></br>
+                  Industry: <%= @company.industry %></br>
+                  Current Price: $<%= number_with_precision(@ticker.latest_price, :precision => 2, :delimiter => ',')  %></br>
+                  Previous Close: $<%= number_with_precision(@ticker.previous_close, :precision => 2, :delimiter => ',')%></br>
+                  Percent Change: <%= @ticker.change_percent %>%  </br>
+                  YTD Change: <%= number_with_precision(@ticker.ytd_change, :precision => 2, :delimiter => ',')%>% </br>
+                  
+                
+                
+              <% end %>
               
-              Current Price: $<%= number_with_precision(@ticker.latest_price, :precision => 2, :delimiter => ',')  %></br>
-              Previous Close: $<%= number_with_precision(@ticker.previous_close, :precision => 2, :delimiter => ',')%></br>
-              Percent Change: <%= @ticker.change_percent %>%  </br>
-              YTD Change: <%= number_with_precision(@ticker.ytd_change, :precision => 2, :delimiter => ',')%>% </br>
-              Market Cap: $<%= number_with_precision(@ticker.market_cap, :precision => 2, :delimiter => ',')%></br>
-             
-             
-          <% end %>
-          
-</br>
-<%= link_to 'Edit', edit_stock_path(@stock) %> |
-<%= link_to 'Back', stocks_path %>
+    </br>
+    <%= link_to 'Edit', edit_stock_path(@stock) %> |
+    <%= link_to 'Back', stocks_path %>
+  </div>
+    <%= @company.description %></br>
+    Market Cap: $<%= number_with_precision(@ticker.market_cap, :precision => 2, :delimiter => ',')%></br>
+</div>
