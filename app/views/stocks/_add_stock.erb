@@ -15,20 +15,19 @@
     <tr>
       <td>
         <div class="field">
-          <%= form.label :ticker %>
-          <%= form.text_field :ticker %>
+         <center> <%= form.text_field :ticker, placeholder: 'Ticker' %></center>
         </div>
       </td>
     </tr>
 
         <div class="field">
-          <%= form.number_field :user_id, value: current_user.id, type: 'hidden' %>
+         <center> <%= form.number_field :user_id, value: current_user.id, type: 'hidden' %> </center>
           
         </div>
     <tr>
       <td>
         <div class="actions">
-          <%= form.submit %>
+         <center> <%= form.submit 'Add Stock' %> </center>
         </div>
       </td>
     </tr>
