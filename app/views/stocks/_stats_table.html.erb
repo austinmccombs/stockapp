@@ -3,6 +3,12 @@
             <% @logo = StockQuote::Stock.logo(@stock.ticker)%>
             <% @company = StockQuote::Stock.company(@stock.ticker) %>
             <% @stats = StockQuote::Stock.stats(@stock.ticker) %>
+            <% @chart = StockQuote::Stock.chart(@stock.ticker) %>
+
+        <% @chart_hash_values = @chart.chart[0].values %>
+        <% @high = @chart_hash_values[1]%>
+        <% @low = @chart_hash_values[2]%>
+        
             
 
 <table class = 'table table-striped'>
@@ -16,11 +22,11 @@
             <td>Volume: <%= number_with_precision(@ticker.iex_volume, :precision => 2, :delimiter => ',') %></td>
         </tr>
         <tr>
-            <td>High: <%= @ticker.high %></td>
+            <td>High: <%= @high %></td>
             <td>Avg Vol: <%=number_with_precision(@ticker.avg_total_volume, :precision => 2, :delimiter => ',')  %></td>
         </tr>
          <tr>
-            <td>Low: <%= @ticker.low %></td>
+            <td>Low: <%= @low %></td>
             <td>Mkt Cap: <%=number_with_precision(@ticker.market_cap, :precision => 2, :delimiter => ',')  %></td>
         </tr>
          <tr>
