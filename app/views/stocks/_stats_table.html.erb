@@ -18,8 +18,8 @@
 
     <tbody>
         <tr>
-            <td>Open: <%= @ticker.iex_open %></td>
-            <td>Volume: <%= number_with_precision(@ticker.iex_volume, :precision => 2, :delimiter => ',') %></td>
+            <td>Open: <%= number_with_precision(@ticker.open, :precision => 2, :delimiter => ',') %></td>
+            <td>Volume: <%= number_with_precision(@ticker.volume, :precision => 2, :delimiter => ',') %></td>
         </tr>
         <tr>
             <td>High: <%= @high %></td>
@@ -41,4 +41,5 @@
     
     </tbody>
 
+<% @chart.inspect %>
     
